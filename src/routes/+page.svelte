@@ -1,15 +1,9 @@
-<script>
-  import Counter from "$lib/Counter.svelte";
-</script>
-
 <svelte:head>
   <title>Svelte Template</title>
 </svelte:head>
 
 <main>
-  <h1 class="text-primary">Hello world!</h1>
-  <Counter />
-  <p>Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps. <i class="fas fa-heart fa-fw"></i></p>
+  <h1 class="text-primary">Camp Scheduler</h1>
 </main>
 
 <style lang="scss">

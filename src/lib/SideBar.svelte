@@ -5,7 +5,7 @@
 </script>
 
 <div class="sidenav">
-    <a href="/page1">Page 1</a>
-    <a href="/page2">Page 2</a>
-    <a href="/page3">Page 3</a>
+    <a href="/">Home</a>
+    <a href="/activities">Activities</a>
+    <a href="/staff">Staff</a>
 </div>
