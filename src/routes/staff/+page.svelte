@@ -2,8 +2,6 @@
   <title>Staff</title>
 </svelte:head>
 
-<script>
-  import Staff from "../../lib/Staff.svelte";
-</script>
-
-<Staff />
+<main>
+  <h1>Staff</h1>
+</main>
