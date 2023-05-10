@@ -6,7 +6,8 @@
 
 <div class="sidenav">
     <a href="/">Home</a>
-    <a href="/activities">Activities</a>
     <a href="/staff">Staff</a>
+    <a href="/activities">Activities</a>
+    <a href="/maintenance">Maintenance</a>
     <a href="/schedule">Schedule</a>
 </div>
