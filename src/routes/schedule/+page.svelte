@@ -3,7 +3,7 @@
 </svelte:head>
 
 <script>
-	import { scheduleData, activitiesData } from "../../lib/stores";
+	import { maintenanceData, activitiesData } from "../../lib/stores";
 
   class ScheduleItem {
     constructor(activity) {
@@ -12,7 +12,7 @@
     }
   }
 
-  let scheduleItems = $scheduleData || [new ScheduleItem];
+  let scheduleItems = $maintenanceData || [new ScheduleItem];
 	let columns = ["Activity"];
 	let numSessions = 3;
 
@@ -26,8 +26,8 @@
 	}
 
 	function saveData() {
-		$scheduleData = scheduleItems;
-    $scheduleData.filter(scheduleItem => scheduleItem.activity && scheduleItem.sessions.length > 0);
+		$maintenanceData = scheduleItems;
+    $maintenanceData.filter(scheduleItem => scheduleItem.activity && scheduleItem.sessions.length > 0);
 	}
 
   function generateSchedule() {
