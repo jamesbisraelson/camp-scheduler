@@ -34,3 +34,4 @@ export const activitiesData = writable(testActivities);
 export const maintenanceData = writable(testMaintenance);
 export const scheduledActivitiesData = writable(null);
 export const scheduledMaintenanceData = writable(null);
+export const staffData = writable(null);
