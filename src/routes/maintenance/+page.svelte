@@ -52,7 +52,7 @@
           <tr>
             <td><input on:change={saveMaintenanceData} required bind:value={job.name} type="text"></td>
             <td><input on:change={saveMaintenanceData} required bind:value={job.startTime} type="time"></td>
-            <td><button on:click={deleteJob)}>x</button></td>
+            <td><button on:click={deleteJob}>x</button></td>
           </tr>
         {/each}
         <!--Create button to add job to list of stored maintenance jobs-->
