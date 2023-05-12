@@ -25,9 +25,9 @@
 		jobs = jobs;  // force page to update immediately
   }
   
-  function addJob(job) {
-    // Add job to array of jobs
-    jobs.push(job)
+  function addJob() {
+    // Add a new job to array of jobs
+    jobs.push(new MaintenanceJob())
     jobs = jobs;  // force page to update immediately
   }
   
@@ -50,9 +50,9 @@
         {#each jobs as job}
           <!--Create a job input for every saved maintenance job-->
           <tr>
-            <td><input on:change={saveMaintenanceData} type="text"></td>
-            <td><input on:change={saveMaintenanceData} type="time"></td>
-            <td><button on:click={deleteJob}>x</button></td>
+            <td><input on:change={saveMaintenanceData} required bind:value={job.name} type="text"></td>
+            <td><input on:change={saveMaintenanceData} required bind:value={job.startTime} type="time"></td>
+            <td><button on:click={deleteJob)}>x</button></td>
           </tr>
         {/each}
         <!--Create button to add job to list of stored maintenance jobs-->
