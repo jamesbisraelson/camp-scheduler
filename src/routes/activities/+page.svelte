@@ -46,7 +46,7 @@
         {#each activities as activity}
           <tr>
             <td><input on:change={saveData} required bind:value={activity.name}></td>
-            <td><input on:change={saveData} required bind:value={activity.numStaff} type="number"></td>
+            <td><input on:change={saveData} required bind:value={activity.numStaff} type="number" min="0"></td>
             <td><button on:click={() => deleteActivity(activity)}>x</button></td>
           </tr>
         {/each}

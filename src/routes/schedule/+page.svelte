@@ -3,6 +3,7 @@
 </svelte:head>
 
 <script>
+
 	import { scheduledActivitiesData, scheduledMaintenanceData, activitiesData, maintenanceData } from "../../lib/stores";
 
   class ScheduledActivity {
@@ -11,6 +12,7 @@
       this.sessions = [];
     }
   }
+
 
   class ScheduledMaintenanceJob {
     constructor(job, startTime, endTime) {
@@ -34,6 +36,7 @@
 		scheduledActivities = [...scheduledActivities, new ScheduledActivity()];
     saveData();
 	}
+
 
   function deleteScheduledMaintenance(item) {
 		scheduledMaintenanceJobs.splice(scheduledMaintenanceJobs.indexOf(item), 1);
