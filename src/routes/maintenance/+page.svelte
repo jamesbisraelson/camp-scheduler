@@ -6,13 +6,14 @@
   import { maintenanceData } from '../../lib/stores.js';
 
   class MaintenanceJob {
-    constructor(name, startTime) {
+    constructor(name, startTime, endTime) {
       this.name = name;
-      this.startTime;
+      this.startTime = startTime;
+      this.endTime = endTime;
     }
   }
   
-  const columns = ["Job Name", "Start Time"];   // columns for table
+  const columns = ["Job Name", "Start Time", "End Time"];   // columns for table
   let jobs = $maintenanceData || [new MaintenanceJob()];  // current possible jobs
   
   function saveMaintenanceData() {
@@ -52,6 +53,7 @@
           <tr>
             <td><input on:change={saveMaintenanceData} required bind:value={job.name} type="text"></td>
             <td><input on:change={saveMaintenanceData} required bind:value={job.startTime} type="time"></td>
+            <td><input on:change={saveMaintenanceData} required bind:value={job.endTime} type="time"></td>
             <td><button on:click={() => deleteJob(job)}>x</button></td>
           </tr>
         {/each}
