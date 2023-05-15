@@ -21,23 +21,15 @@ export class TimeSlot {
         const thisEndTime = this.timeStringToDate(this.endTime);
         const otherEndTime = this.timeStringToDate(otherTimeSlot.endTime);
 
-        const startTimeConflicts = thisStartTime <= thisEndTime && thisStartTime >= otherStartTime;  // slot 1 starts during slot 2
-        const endTimeConflicts = thisEndTime <= thisEndTime && thisEndTime >= otherStartTime;    // slot 1 ends during slot 2
-        
-        return startTimeConflicts || endTimeConflicts;
+        const timeInInterval = (time, intervalStartTime, intervalEndTime) => {
+            return time >= intervalStartTime && time <= intervalEndTime;    // return true if time falls within interval, otherwise false
+        }
 
+        const thisStartTimeConflicts = timeInInterval(thisStartTime, otherStartTime, otherEndTime);    // slot 1 starts during slot 2
+        const thisEndTimeConflicts = timeInInterval(thisEndTime, otherStartTime, otherEndTime);    // slot 1 ends during slot 2
+        const otherStartTimeConflicts = timeInInterval(otherStartTime, thisStartTime, thisEndTime); // slot 2 starts during slot 1
+        const otherEndTimeConflicts = timeInInterval(otherEndTime, thisStartTime, thisEndTime); // slot 2 ends during slot 1
+        
+        return thisStartTimeConflicts || thisEndTimeConflicts || otherStartTimeConflicts || otherEndTimeConflicts;  // return false if any conflict, otherwise false
     }
 }
-
-// Tests to understand Date object
-// let d = new Date('2023-02-10');
-// d.setUTCHours(0,0,0,0);
-// console.log(d);
-
-// let date = TimeSlot.timeStringToDate('12:30');
-// console.log(date.toTimeString());
-
-// let date2 = TimeSlot.timeStringToDate('13:30');
-// console.log(date < date2);
-const timeSlot = new TimeSlot('12:30', '13:30');
-console.log(timeSlot.detectConflict(new TimeSlot('13:12', '13:50')));
