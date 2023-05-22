@@ -24,7 +24,7 @@ import { staffData, activitiesData, maintenanceData } from '/src/lib/stores.js';
   }
 
   function addStaffName() {
-   let newStaff = new StaffName(count, "", "" );
+   let newStaff = new StaffName( "", "", count);
     newStaff.id = count;
     count++;
     staff = [...staff, newStaff]
@@ -58,8 +58,9 @@ import { staffData, activitiesData, maintenanceData } from '/src/lib/stores.js';
            
             <td><input on:change={saveData} bind:value={s.name}></td>
             <td><button on:click={() => deleteStaffName(s)}>x</button></td>
+            {#if $activitiesData && $maintenanceData}
             <td><input bind:checked={s.hasCertification} on:change={saveData} type="checkbox"></td>
-            
+            {/if}
           </tr>
         </div>
           {#if s.hasCertification}
