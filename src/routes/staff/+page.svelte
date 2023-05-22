@@ -11,12 +11,12 @@ import { staffData, activitiesData, maintenanceData } from '/src/lib/stores.js';
       this.name = name;
       this.hasCertification = hasCertification;
       this.id = id;
-      
+      this.activities = [];
+      this.maintenance = [];
     }
   }
-
-  let staff = $staffData || [new StaffName()];
   let count = 0;
+  let staff = $staffData || [new StaffName("", "", count++)];
 
   function deleteStaffName(name) {
     staff.splice(staff.indexOf(name), 1)
@@ -24,16 +24,11 @@ import { staffData, activitiesData, maintenanceData } from '/src/lib/stores.js';
   }
 
   function addStaffName() {
-   let newStaff = new StaffName( "", "", count);
-    newStaff.id = count;
-    count++;
-    staff = [...staff, newStaff]
+    staff = [...staff, new StaffName( "", "", count++)];
   }
 
   function saveData() {
     $staffData = staff;
-    $staffData.filter(name => name.name && name.name !== "");
-    console.log(staff);
   }
 
 
@@ -68,9 +63,9 @@ import { staffData, activitiesData, maintenanceData } from '/src/lib/stores.js';
           <tr class='activity-container'>
             <h3>Activities</h3>
             
-              {#each $activitiesData as activity}
+              {#each $activitiesData.filter(a => (a.name && a.name != "")) as activity}
               <div class="activities">
-                <input type="checkbox" name={activity}>
+                <input type="checkbox" value={activity} bind:group={s.activities}>
                 <label for={activity}>{activity.name}</label>
               </div>
               {/each}
@@ -80,9 +75,9 @@ import { staffData, activitiesData, maintenanceData } from '/src/lib/stores.js';
 
           <tr class='maintenance-container'>
             <h3>Maintenance</h3>
-            {#each $maintenanceData as maintenance}
+            {#each $maintenanceData.filter(m => (m.name && m.name != "")) as maintenance}
             <div class="maintenance">
-              <input type="checkbox" name={maintenance}>
+              <input type="checkbox" value={maintenance} bind:group={s.maintenance}>
               <label for={maintenance}>{maintenance.name}</label>
             </div>
             {/each}

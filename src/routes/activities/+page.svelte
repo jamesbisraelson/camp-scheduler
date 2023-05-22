@@ -26,7 +26,6 @@
 
 	function saveData() {
 		$activitiesData = activities;
-    $activitiesData.filter(activity => activity.name && activity.name !== "");
 	}
 
 </script>

@@ -82,7 +82,7 @@
         <tr>
           <td>
             <select bind:value={scheduledActivity.activity}>
-              {#each $activitiesData as activity}
+              {#each $activitiesData.filter(a => (a.name && a.name != "")) as activity}
               <option value={activity}>
                 {activity.name}
               </option>
@@ -120,7 +120,7 @@
         <tr>
           <td>
             <select bind:value={scheduledMaintenanceJob.job}>
-              {#each $maintenanceData as maintenance}
+              {#each $maintenanceData.filter(m => (m.name && m.name != "")) as maintenance}
               <option value={maintenance}>
                 {maintenance.name}
               </option>
